@@ -4,6 +4,8 @@ const Table = ({ taskList, handleOnDelete, switchTask }) => {
   const entryList = taskList.filter((item) => item.type === "entry");
   const badList = taskList.filter((item) => item.type === "bad");
 
+  const savedhours = badList.reduce((acc, item) => acc + +item.hours, 0);
+
   return (
     <div className="row mt-5">
       <div className="col-md text-center">
@@ -64,7 +66,7 @@ const Table = ({ taskList, handleOnDelete, switchTask }) => {
           </tbody>
         </table>
         <div className="alert alert-success">
-          You could have saved <span id="savedhours">0</span>
+          You could have saved <span id="savedhours">{savedhours}</span>
         </div>
       </div>
     </div>
